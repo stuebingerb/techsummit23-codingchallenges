@@ -3,14 +3,88 @@
 <head>
     <title>#6 CSS Exploitation</title>
     <style>
-        /* here's your sketch pad, let's call it: picture as code */
+        .mm2 {
+        width: 0;
+        height: 0;
+        border-top: 100px solid red;
+        border-right: 100px solid transparent;
+        margin-left: -4px;
+        display: inline-block;
+        }
 
+        .mm {
+        width: 300px;
+        height: 100px;
+        background: red;
+        display: inline-block;
+        }
+
+        .se {
+        width: 0;
+        height: 0;
+        border-bottom: 100px solid black;
+        border-left: 100px solid transparent;
+        margin-right: -4px;
+        margin-left: 150px;
+        position: absolute;
+        left: 75px;
+        top: 50px;
+        display: inline-block;
+        z-index: -10;
+        }
+
+        .se2 {
+        width: 270px;
+        height: 100px;
+        position: absolute;
+        left: 325px;
+        top: 50px;
+        background: black;
+        display: inline-block;
+        z-index: -10;
+        }
+
+        .tech::after {
+        content: "Technology";
+        position: absolute;
+        top: 140px;
+        left: 30px;
+        letter-spacing: 2px;
+        font-family: Arial;
+        font-size: 18pt;
+        }
+
+        .mmfont::after {
+        content: "Media🌀Markt";
+        color: white;
+        font-size: 36pt;
+        font-style: italic;
+        font-family: Arial;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        }
+
+        .sefont::after {
+        content: "🪐SATURN";
+        color: white;
+        font-size: 36pt;
+        position: absolute;
+        top: 70px;
+        left: 350px;
+        }
     </style>
 </head>
 
 <body>
     <div class="logo">
-        <!-- add as many "<div class="xyz"> </div>" as you like here, but nothing else" -->
+      <div class="mm"></div>
+      <div class="mm2"></div>
+      <div class="se"></div>
+      <div class="se2"></div>
+      <div class="tech"></div>
+      <div class="mmfont"></div>
+      <div class="sefont"></div>
     </div>
 </body>
 </html>
