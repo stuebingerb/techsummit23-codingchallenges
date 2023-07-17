@@ -17,16 +17,16 @@ fun Serializable.toByteArray() = ByteArrayOutputStream().use { bos ->
 fun handleResponse(response: HttpResponse?) = response?.run {
     when {
         code in 200..201 -> reasonPhrase
-        code in 400..499 -> throw IllegalStateException("Server responses with client error")
-        code in 500..599 -> throw IllegalStateException("Server responses with server error")
-        else -> throw IllegalStateException("Receive unexpected response code " + code)
+        code in 400..499 -> error("Server responses with client error")
+        code in 500..599 -> error("Server responses with server error")
+        else -> error("Receive unexpected response code $code")
     }
-} ?: throw IllegalStateException("Response is null")
+} ?: error("Response is null")
 
 private const val DELIMITER = "[^a-zA-Z'äöü]+"
 
 fun File.countWord() = runCatching {
-    readText().split(Regex(DELIMITER)).filter { it.isNotBlank() }.groupingBy { it }.eachCount()
+    readText().split(Regex(DELIMITER)).filterNot { it.isBlank() }.groupingBy { it }.eachCount()
 }.getOrElse {
-    throw IllegalArgumentException("Unable to read the current file ${this.name}!", it)
+    throw IllegalArgumentException("Unable to read the current file $name!", it)
 }
