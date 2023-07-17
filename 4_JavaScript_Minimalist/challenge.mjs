@@ -1,1 +1,1 @@
-export{weightedSort};let weightedSort=(t)=>[...new Set(t.replace(/['-]/g,"").split(/[ .,!?]+/).filter(n=>n))].map(w=>{let s=0,i=0;for(;i<w.length;i++){s+=w.charCodeAt(i);}return new Array(w,s);}).sort().reverse().sort((a,b)=>b[1]-a[1]).map(e=>e[0]+"|"+e[1]).join`\n`;
+export{weightedSort};let weightedSort=(t)=>[...new Set(t.replace(/['-]/g,"").split(/[ .,!?]/).filter(n=>n))].map(w=>new Array(w,[...w].reduce((p,c)=>p+=c.charCodeAt(),0))).sort().reverse().sort((a,b)=>b[1]-a[1]).map(e=>e[0]+"|"+e[1]).join`\n`;
