@@ -1,0 +1,1 @@
+class Challenge{fun weightedSort(t:String)=t.replace(Regex("['-?!,]"),"").split(" ").sorted().reversed().filter{it!=""}.map{it to-it.chars().sum()}.toSet().sortedBy{it.second}.joinToString("\n"){it.first+"|"+-it.second}}
